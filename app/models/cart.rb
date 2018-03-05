@@ -16,7 +16,7 @@ class Cart < ActiveRecord::Base
     if !!item
       item.quantity += 1
     else
-      item = self.line_items.build(item_id => item_id)
+      item = self.line_items.build(:item_id => item_id)
     end
     item
   end
