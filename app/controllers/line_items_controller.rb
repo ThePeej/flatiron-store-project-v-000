@@ -3,11 +3,9 @@ class LineItemsController < ApplicationController
 
   def create
     if current_user.current_cart == nil
-      new_cart = Cart.create
+      new_cart = Cart.create(:user_id => current_user.id)
       current_user.current_cart = new_cart
       current_user.save
-      current_user.current_cart.save
-      binding.pry
     end
     line_item = current_user.current_cart.add_item(params[:item_id])
     if line_item.save
