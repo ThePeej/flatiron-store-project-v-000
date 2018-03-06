@@ -18,7 +18,6 @@ describe 'Feature Test: Cart', :type => :feature do
 
      it "Lists all items in the cart" do
        visit cart_path(@user.current_cart)
-       binding.pry
        expect(page).to have_content(@first_item.title)
        expect(page).to have_content(@second_item.title)
      end
