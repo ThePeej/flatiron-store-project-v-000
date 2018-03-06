@@ -1,3 +1,4 @@
+require 'pry'
 class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :items, through: :line_items
@@ -22,7 +23,7 @@ class Cart < ActiveRecord::Base
   end
 
   def checkout
-    self.status = "submitted"
+    self.update(status: 'submitted')
     change_inventory
   end
 

@@ -12,4 +12,6 @@
 
 <p>Order total: <strong><%= number_to_currency(current_user.current_cart.total) %></strong> </p>
 
-<%= button_to 'Checkout', checkout_path %>
+<% if @cart.status == "not submitted" %>
+  <%= button_to 'Checkout', checkout_path %>
+<% end %>

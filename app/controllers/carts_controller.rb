@@ -1,10 +1,14 @@
 require 'pry'
 class CartsController < ApplicationController
 
+  def show
+    @cart = Cart.find(params[:id])
+  end
+
   def checkout
-    cart = Card.find(params[:id])
+    cart = Cart.find(params[:id])
     cart.checkout
-    binding.pry
+    User.find(cart.user_id).remove_cart
     redirect_to cart_path(cart)
   end
 
